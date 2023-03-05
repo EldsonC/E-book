@@ -38,4 +38,39 @@ export const SidebarStyle = styled.aside `
             align-items: center;
         }
     }
+
+    nav {
+        width: 100%;
+
+        ul {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                width: 100%;
+                height: 55px;
+
+                list-style: none;
+                
+                border-bottom: 1px solid #0F0F0F;
+
+                .nav-button-style {
+                    padding: 0px 15px;
+                    height: 100%;
+                    display: flex;
+                    gap: 29px;
+                    align-items: center;
+
+                    text-decoration: none;
+
+                    span {
+                        color: #BDBDBD;
+                        font-size: 11.77px;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
 `;
