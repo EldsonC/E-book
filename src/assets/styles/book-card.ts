@@ -24,8 +24,6 @@ export const BookCardStyle = styled.div `
         justify-content: center;
         align-items: center;
 
-        position: absolute;
-
         background: hsla(0, 0%, 0%, 0.65);
 
         animation: showModal .5s;

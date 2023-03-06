@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { stateModal } from "../redux/features/modalCardBookSlice";
 import { ModalCardBook } from "../shared/components/modal-cardbook";
 
+import { bookFound } from "../redux/features/searchSlice";
+
 interface BookProps {
     cover?: string;
     name?: string;
@@ -18,6 +20,7 @@ interface BookProps {
 
 export function Books() {
     const dispatch = useDispatch()
+    const bookFind = useSelector(bookFound)
 
     const showModal = (idBook:string, element:HTMLElement) => {
         const elementPos = element
@@ -29,7 +32,7 @@ export function Books() {
         const data = [
             {
                 idBook: idBook,
-                top: top - 120,
+                top: top,
                 left: left - 209
             },
         ]
@@ -38,10 +41,14 @@ export function Books() {
     }
 
     const modalState = useSelector(stateModal)
+
+    const bookFilter = books.filter((book:BookProps) => book.name?.includes(
+        bookFind.toLocaleLowerCase())
+    )
     return (
         <BooksStyle>
-            {modalState ? <ModalCardBook/> : ""}
-            {books.map((dataBook:BookProps, key:number) => {
+            {/* {modalState ? <ModalCardBook/> : ""} */}
+            {bookFilter.map((dataBook:BookProps, key:number) => {
                 return (
                     <>
                     <div 
