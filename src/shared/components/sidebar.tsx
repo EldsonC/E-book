@@ -6,7 +6,15 @@ import { MenuIcon } from "../../assets/icons/menu";
 import { StudentIcon } from "../../assets/icons/student";
 import { SidebarStyle } from "../../assets/styles/sidebar";
 
+
+import { useDispatch} from "react-redux";
+import { showModalAddBook } from "../../redux/features/modalAddBook";
+
 export function Sidebar() {
+    const dispatch = useDispatch()
+    const showModal = () => {
+        dispatch(showModalAddBook())
+    }
     return (
         <SidebarStyle>
             <div className="container-top">
@@ -43,7 +51,7 @@ export function Sidebar() {
             </div>
 
             <div className="container-bottom">
-                <button>
+                <button onClick={() => showModal()}>
                     New book
                 </button>
             </div>

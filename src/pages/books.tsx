@@ -8,6 +8,8 @@ import { stateModal } from "../redux/features/modalCardBookSlice";
 import { ModalCardBook } from "../shared/components/modal-cardbook";
 
 import { bookFound } from "../redux/features/searchSlice";
+import { stateModalAddBook } from "../redux/features/modalAddBook";
+import { ModalAddBook } from "../shared/components/modal-add-book";
 
 interface BookProps {
     cover?: string;
@@ -41,27 +43,29 @@ export function Books() {
     }
 
     const modalState = useSelector(stateModal)
+    const modaladdbook = useSelector(stateModalAddBook)
 
     const bookFilter = books.filter((book:BookProps) => book.name?.includes(
         bookFind.toLocaleLowerCase())
     )
     return (
-        <BooksStyle>
-            {/* {modalState ? <ModalCardBook/> : ""} */}
-            {bookFilter.map((dataBook:BookProps, key:number) => {
-                return (
-                    <>
-                    <div 
-                        onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}
-                    >
-                        <BookCard
-                            key={key}
-                            cover={dataBook.cover}
-                        />
-                    </div>
-                    </>
-                )
-            })}
-        </BooksStyle>
+        <>
+        
+            {modaladdbook ? <ModalAddBook/> : ""}
+            <BooksStyle>
+                {bookFilter.map((dataBook:BookProps, key:number) => {
+                    return (
+                        <>
+                        <div onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}>
+                            <BookCard
+                                key={key}
+                                cover={dataBook.cover}
+                            />
+                        </div>
+                        </>
+                    )
+                })}
+            </BooksStyle>
+        </>
     )
 }
