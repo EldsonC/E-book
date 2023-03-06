@@ -1,4 +1,6 @@
 import { BookCardStyle } from "../../assets/styles/book-card";
+import { useDispatch } from "react-redux";
+import { showModalBook } from "../../redux/features/modalCardBookSlice";
 
 interface BookProps {
     cover?: string;
@@ -15,11 +17,11 @@ export function BookCard({
     author,
     gender,
     year,
-    pages
+    pages,
 }:BookProps) {
     return (
         <BookCardStyle>
-            <img src={cover} alt="" />
+            <img src={cover} alt="" /> 
         </BookCardStyle>
     )
 }
