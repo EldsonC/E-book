@@ -8,6 +8,10 @@ export const SidebarStyle = styled.aside `
     top: 0px;
     left: 0px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     background-color: #17181C;
 
     header {
@@ -72,5 +76,21 @@ export const SidebarStyle = styled.aside `
                 }
             }
         }
+    }
+
+    button {
+        width: 100%;
+        height: 55px;
+
+        border: none;
+        outline: none;
+
+        background-color: #41B3B3;
+
+        color: white;
+        font-size: 11.77px;
+        font-weight: 700;
+
+        cursor: pointer;
     }
 `;

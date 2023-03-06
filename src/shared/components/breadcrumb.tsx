@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "../../assets/icons/arrowright";
+import { BreadCrumbStyle } from "../../assets/styles/breadcrumb";
 
 interface BreadCrumbProps {
     title: string;
@@ -7,10 +8,10 @@ interface BreadCrumbProps {
 
 export function BreadCrumb({title, subTitle}:BreadCrumbProps) {
     return (
-        <div>
-            <span>{title}</span>
+        <BreadCrumbStyle>
+            <span id="title">{title}</span>
             <ArrowRightIcon/>
-            <span>{subTitle}</span>
-        </div>
+            <span id="subtitle">{subTitle}</span>
+        </BreadCrumbStyle>
     )
 }
