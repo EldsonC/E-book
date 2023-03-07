@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { BookDetails } from "../pages/book-details";
 import { Books } from "../pages/books";
 import { Header } from "../shared/components/header";
 import { Sidebar } from "../shared/components/sidebar";
@@ -13,6 +14,15 @@ export function Routers() {
                     <Subheader/>
                     <Sidebar/>
                     <Books/> 
+                </>
+            }/>
+
+            <Route path="/details" element={
+                <>
+                    <Header/>
+                    <Subheader/>
+                    <Sidebar/>
+                    <BookDetails/>
                 </>
             }/>
         </Routes>

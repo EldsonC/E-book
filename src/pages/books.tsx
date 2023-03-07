@@ -5,7 +5,6 @@ import { BookCard } from "../shared/components/book-card";
 import { books } from "../shared/mocks/books";
 import { useSelector } from "react-redux";
 import { stateModal } from "../redux/features/modalCardBookSlice";
-import { ModalCardBook } from "../shared/components/modal-cardbook";
 
 import { bookFound } from "../redux/features/searchSlice";
 import { stateModalAddBook } from "../redux/features/modalAddBook";
