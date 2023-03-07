@@ -17,7 +17,7 @@ export const BookDetailsStyle = styled.div `
 
     .cover-bg {
         width: 100%;
-        height: 300px;
+        height: 500px;
 
         position: absolute;
         top: 0px;
@@ -33,6 +33,9 @@ export const BookDetailsStyle = styled.div `
 
     .container-left {
         z-index: 1000;
+
+        display: flex;
+        gap: 50px;
         .cover-book {
             width: 300px;
             height: 430px;
@@ -42,6 +45,50 @@ export const BookDetailsStyle = styled.div `
                 height: 100%;
 
                 object-fit: cover;
+            }
+        }
+
+        .container-right {
+            h1 {
+                font-size: 40px;
+                margin-bottom: 15px;
+                color: white;
+            }
+
+            
+            .data-details {
+                margin-bottom: 30px;
+                display: flex;
+                gap: 15px;
+                
+                .container-card {
+                    padding: 5px 24px;
+                    
+                    display: flex;
+                    align-items: center;
+
+                    gap: 7px;
+
+                    background: hsla(0, 0%, 100%, 0.32);
+                    
+                    border: 1px solid white;
+                    border-radius: 50px;
+                    
+                    cursor: pointer;
+                    
+                    span {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: white;
+                    }
+                }
+            }
+
+            p {
+                max-width: 500px;
+                color: white;
+                font-size: 16px;
+                font-weight: 500;
             }
         }
     }
