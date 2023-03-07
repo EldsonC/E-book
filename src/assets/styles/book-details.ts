@@ -90,6 +90,33 @@ export const BookDetailsStyle = styled.div `
                 font-size: 16px;
                 font-weight: 500;
             }
+
+            .button-container {
+                margin-top: 30px;
+
+                display: flex;
+                gap: 15px;
+
+                button {
+                    padding: 5px 23px;
+
+                    border-radius: 50px;
+                    border: none;
+                    outline: none;
+
+                    color: white;
+                    font-size: 13px;
+                    font-weight: 700;
+                }
+
+                #delete-btn {
+                    background: #EE1C1C;
+                }
+
+                #edit-btn {
+                    background: #41B3B3;
+                }
+            }
         }
     }
 `;
