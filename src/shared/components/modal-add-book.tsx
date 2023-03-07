@@ -10,6 +10,19 @@ export function ModalAddBook() {
     const hideModal = () => {
         dispatch(hideModalAddBook())
     }
+
+    const showPreview = (event:any) => {
+        const src = URL.createObjectURL(event.target.files[0])
+        const preview = document.getElementById("image-preview") as HTMLImageElement
+        
+        preview.style.display = "flex"
+        preview.src = src
+
+        const text_fill = document.querySelector("#image_fill") as HTMLDivElement;
+        text_fill.style.display = "none"
+    }
+
+
     return (
         <ModalAddBookStyle>
             <div className="conatiner-form">
@@ -22,10 +35,20 @@ export function ModalAddBook() {
                 <form>
                     <div className="preview-image-cover">
                         <label htmlFor="image">
-                            <ImageIcon/>
-                            <span>Insert cover</span>
+                            <img id="image-preview"/>
+                            <div id="image_fill">
+                                <ImageIcon/>
+                                <span>Insert cover</span>
+                            </div>
                         </label>
-                        <input type="file" id="image"/>
+                        <input 
+                            type="file" 
+                            id="image"
+                            accept="image/png,image/jpeg,image/jpg"
+                            onChange={(e) => {
+                                showPreview(e)
+                            }}
+                        />
                     </div>
                     <div className="data-input-book">
                         <input type="text" placeholder="Name"/>

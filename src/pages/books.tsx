@@ -56,9 +56,9 @@ export function Books() {
                 {bookFilter.map((dataBook:BookProps, key:number) => {
                     return (
                         <>
-                        <div onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}>
+                        <div key={key} onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}>
                             <BookCard
-                                key={key}
+                            key={key}
                                 cover={dataBook.cover}
                             />
                         </div>

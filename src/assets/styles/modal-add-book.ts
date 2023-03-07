@@ -63,7 +63,6 @@ export const ModalAddBookStyle = styled.div `
             z-index: 1000;
 
             display: flex;
-            /* justify-content: space-between; */
             gap: 65px;
 
             .preview-image-cover {
@@ -85,14 +84,29 @@ export const ModalAddBookStyle = styled.div `
     
                     gap: 15px;
     
-                    /* border: 2px dashed #BABABA; */
-    
                     cursor: pointer;
+
+                    img {
+                        display: none;
+                        width: 205px;
+                        height: 307px;
+
+                        object-fit: cover;
+                    }
     
                     span {
                         font-size: 12px;
                         font-weight: 700;
                         color: #ffffff;
+                    }
+
+                    #image_fill {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        gap: 15px;
+
                     }
                 }
             }
