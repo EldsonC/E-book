@@ -11,6 +11,8 @@ import { stateModalAddBook } from "../redux/features/modalAddBook";
 import { ModalAddBook } from "../shared/components/modal-add-book";
 import { setDetails } from "../redux/features/detailsbookSlice";
 
+import { useNavigate } from "react-router-dom";
+
 interface BookProps {
     cover: string;
     name: string;
@@ -22,6 +24,7 @@ interface BookProps {
 
 export function Books() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const bookFind = useSelector(bookFound)
 
     const showModal = (idBook:string, element:HTMLElement) => {
@@ -61,6 +64,8 @@ export function Books() {
             }
         ]
         dispatch(setDetails(data))
+
+        navigate("/details")
     }
 
     const modalState = useSelector(stateModal)
