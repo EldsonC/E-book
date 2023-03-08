@@ -9,14 +9,15 @@ import { stateModal } from "../redux/features/modalCardBookSlice";
 import { bookFound } from "../redux/features/searchSlice";
 import { stateModalAddBook } from "../redux/features/modalAddBook";
 import { ModalAddBook } from "../shared/components/modal-add-book";
+import { setDetails } from "../redux/features/detailsbookSlice";
 
 interface BookProps {
-    cover?: string;
-    name?: string;
-    author?: string;
-    gender?: string;
-    year?: number;
-    pages?: number;
+    cover: string;
+    name: string;
+    author: string;
+    gender: string;
+    year: number;
+    pages: number;
 }
 
 export function Books() {
@@ -41,6 +42,27 @@ export function Books() {
         dispatch(showModalBook(data))
     }
 
+    const setDetailsBook = (
+        cover: string, 
+        name: string,
+        author: string,
+        year: number,
+        pages: number,
+    ) => {
+
+        const data = [
+            {
+                cover: cover,
+                name: name,
+                author: author,
+                year: year,
+                pages: pages
+
+            }
+        ]
+        dispatch(setDetails(data))
+    }
+
     const modalState = useSelector(stateModal)
     const modaladdbook = useSelector(stateModalAddBook)
 
@@ -55,7 +77,17 @@ export function Books() {
                 {bookFilter.map((dataBook:BookProps, key:number) => {
                     return (
                         <>
-                        <div key={key} onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}>
+                        <div 
+                            key={key} 
+                            onMouseOver={(e) => showModal(key.toString(), e.currentTarget)}
+                            onClick={() => setDetailsBook(
+                                dataBook.cover,
+                                dataBook.name,
+                                dataBook.author,
+                                dataBook.year,
+                                dataBook.pages
+                            )}
+                        >
                             <BookCard
                             key={key}
                                 cover={dataBook.cover}

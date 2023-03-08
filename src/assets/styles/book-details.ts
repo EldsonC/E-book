@@ -85,6 +85,7 @@ export const BookDetailsStyle = styled.div `
             }
 
             p {
+                line-height: 25px;
                 max-width: 500px;
                 color: white;
                 font-size: 16px;
@@ -98,7 +99,7 @@ export const BookDetailsStyle = styled.div `
                 gap: 15px;
 
                 button {
-                    padding: 5px 23px;
+                    padding: 7px 40px;
 
                     border-radius: 50px;
                     border: none;
@@ -107,6 +108,8 @@ export const BookDetailsStyle = styled.div `
                     color: white;
                     font-size: 13px;
                     font-weight: 700;
+
+                    cursor: pointer;
                 }
 
                 #delete-btn {
