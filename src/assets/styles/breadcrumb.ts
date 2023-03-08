@@ -7,7 +7,9 @@ export const BreadCrumbStyle = styled.div `
 
     span {
         font-size: 16px;
-        font-weight: 700
+        font-weight: 700;
+
+        text-transform: capitalize;
     }
     #title {
         color: #ffffff;

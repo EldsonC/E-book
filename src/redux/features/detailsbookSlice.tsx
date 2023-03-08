@@ -14,7 +14,7 @@ export const slice = createSlice({
     name: "detailsbook",
     initialState: {
         cover: "",
-        name: "",
+        name: "All books",
         author: "",
         year: 0,
         pages: 0
