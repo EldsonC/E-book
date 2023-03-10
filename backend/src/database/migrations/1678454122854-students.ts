@@ -17,7 +17,7 @@ export class students1678454122854 implements MigrationInterface {
                         type: "varchar"
                     },
                     {
-                        name: "",
+                        name: "books",
                         type: "varchar"
                     }
                 ]

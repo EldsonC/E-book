@@ -37,23 +37,19 @@ export class books1678453607959 implements MigrationInterface {
                         type: "numeric"
                     },
                     {
-                        name: "categorie_name",
-                        type: "varchar"
-                    },
-                    {
                         name: "created_At",
                         type: "timestamp",
                         default: "now()"
                     }
                 ],
-                foreignKeys: [
-                    {
-                        name: "fk_categories",
-                        columnNames: ["categorie_name"],
-                        referencedTableName: "categories",
-                        referencedColumnNames: ["name"]
-                    }
-                ]
+                // foreignKeys: [
+                //     {
+                //         name: "fk_categories",
+                //         columnNames: ["category"],
+                //         referencedTableName: "categories",
+                //         referencedColumnNames: ["name"]
+                //     }
+                // ]
             })
         )
     }
