@@ -19,7 +19,7 @@ export class CreateBookService {
         year,
         pages
     }:BookProps): Promise<Books | Error> {
-        const repository = AppDataSource.getMongoRepository(Books);
+        const repository = AppDataSource.getRepository(Books);
 
         const book = repository.create({
             cover,

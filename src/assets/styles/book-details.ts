@@ -89,11 +89,11 @@ export const BookDetailsStyle = styled.div `
                 }
     
                 p {
-                    line-height: 25px;
+                    line-height: 22px;
                     max-width: 500px;
                     color: white;
                     font-size: 16px;
-                    font-weight: 500;
+                    font-weight: 400;
                 }
     
                 .button-container {
@@ -141,4 +141,5 @@ export const BookDetailsStyle = styled.div `
         flex-wrap: wrap;
         gap: 15px;
     }
+    
 `;

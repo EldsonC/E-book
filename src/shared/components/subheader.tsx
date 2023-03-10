@@ -10,7 +10,7 @@ export function Subheader() {
     return (
         <SubheaderStyle>
             <BreadCrumb 
-                title="Book"
+                title="Books"
                 subTitle={bookName.name}
             />
         </SubheaderStyle>
