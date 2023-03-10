@@ -42,14 +42,14 @@ export class books1678453607959 implements MigrationInterface {
                         default: "now()"
                     }
                 ],
-                // foreignKeys: [
-                //     {
-                //         name: "fk_categories",
-                //         columnNames: ["category"],
-                //         referencedTableName: "categories",
-                //         referencedColumnNames: ["name"]
-                //     }
-                // ]
+                foreignKeys: [
+                    {
+                        name: "fk_categories",
+                        columnNames: ["category"],
+                        referencedTableName: "categories",
+                        referencedColumnNames: ["name"]
+                    }
+                ]
             })
         )
     }

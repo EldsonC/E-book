@@ -21,20 +21,20 @@ export class bookGet1678458044678 implements MigrationInterface {
                         type: "varchar"
                     }
                 ],
-                // foreignKeys: [
-                //     {
-                //         name: "fk_student",
-                //         columnNames: ["id_student"],
-                //         referencedTableName: "students",
-                //         referencedColumnNames: ["id"]
-                //     },
-                //     {
-                //         name: "fk_book",
-                //         columnNames: ["id_book"],
-                //         referencedTableName: "books",
-                //         referencedColumnNames: ["id"]
-                //     }
-                // ]
+                foreignKeys: [
+                    {
+                        name: "fk_student",
+                        columnNames: ["id_student"],
+                        referencedTableName: "students",
+                        referencedColumnNames: ["id"]
+                    },
+                    {
+                        name: "fk_book",
+                        columnNames: ["id_book"],
+                        referencedTableName: "books",
+                        referencedColumnNames: ["id"]
+                    }
+                ]
             })
         )
     }
