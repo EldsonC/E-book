@@ -9,5 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     body, html {
         box-sizing: border-box;
         font-family: "Inter", sans-serif !important;
+
+        scroll-behavior: smooth;
     }
 `;

@@ -4,9 +4,10 @@ import { YearIcon } from "../assets/icons/year";
 import { BookDetailsStyle } from "../assets/styles/book-details";
 import { books } from "../shared/mocks/books";
 
-import { dataDetails } from "../redux/features/detailsbookSlice";
-import { useSelector } from "react-redux";
+import { dataDetails, setDetails } from "../redux/features/detailsbookSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { BookCard } from "../shared/components/book-card";
+import { useNavigate } from "react-router-dom";
 
 interface BookProps {
     cover: string;
@@ -19,6 +20,8 @@ interface BookProps {
 
 export function BookDetails() {
     const dataBook = useSelector(dataDetails)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const bookFind = dataBook.author
 
@@ -26,10 +29,31 @@ export function BookDetails() {
         bookFind.toLocaleLowerCase())
     )
 
+    const setDetailsBook = (
+        cover: string, 
+        name: string,
+        author: string,
+        year: number,
+        pages: number,
+    ) => {
+
+        const data = [
+            {
+                cover: cover,
+                name: name,
+                author: author,
+                year: year,
+                pages: pages
+
+            }
+        ]
+        dispatch(setDetails(data))
+        window.scrollTo(0, 0)
+    }
+
     return (
         <BookDetailsStyle>
             <div className="container-details">
-
                 <div className="cover-bg">
                     <img src="https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
                 </div>
@@ -84,9 +108,18 @@ export function BookDetails() {
             <div className="others-books">
                 {bookFilter.map((dataBook:BookProps) => {
                     return (
-                        <BookCard
-                            cover={dataBook.cover}
-                        />
+                        <div onClick={(() => setDetailsBook(
+                            dataBook.cover,
+                            dataBook.name,
+                            dataBook.author,
+                            dataBook.year,
+                            dataBook.pages
+                            
+                        ))}>
+                            <BookCard
+                                cover={dataBook.cover}
+                            />
+                        </div>
                     )
                 })}
             </div>

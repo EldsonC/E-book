@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { BooksStyle } from "../assets/styles/books";
-import { showModalBook, hideModalBook } from "../redux/features/modalCardBookSlice";
+import { showModalBook } from "../redux/features/modalCardBookSlice";
 import { BookCard } from "../shared/components/book-card";
 import { books } from "../shared/mocks/books";
 import { useSelector } from "react-redux";
@@ -12,8 +12,6 @@ import { ModalAddBook } from "../shared/components/modal-add-book";
 import { setDetails } from "../redux/features/detailsbookSlice";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { api } from "../shared/services/api";
 
 interface BookProps {
     cover: string;
