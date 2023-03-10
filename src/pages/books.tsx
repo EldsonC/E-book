@@ -12,6 +12,8 @@ import { ModalAddBook } from "../shared/components/modal-add-book";
 import { setDetails } from "../redux/features/detailsbookSlice";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { api } from "../shared/services/api";
 
 interface BookProps {
     cover: string;
@@ -74,6 +76,7 @@ export function Books() {
     const bookFilter = books.filter((book:BookProps) => book.name?.includes(
         bookFind.toLocaleLowerCase())
     )
+
     return (
         <>
         
