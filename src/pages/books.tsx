@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { BooksStyle } from "../assets/styles/books";
 import { showModalBook } from "../redux/features/modalCardBookSlice";
 import { BookCard } from "../shared/components/book-card";
-import { books } from "../shared/mocks/books";
+
 import { useSelector } from "react-redux";
 import { stateModal } from "../redux/features/modalCardBookSlice";
 
@@ -12,20 +12,31 @@ import { ModalAddBook } from "../shared/components/modal-add-book";
 import { setDetails } from "../redux/features/detailsbookSlice";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../shared/services/api";
 
 interface BookProps {
     cover: string;
     name: string;
     author: string;
-    gender: string;
     year: number;
     pages: number;
+    category_id: string;
 }
 
 export function Books() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const bookFind = useSelector(bookFound)
+
+    const [books , setBooks] = useState([])
+
+    useEffect(() => {
+        api.get("/get-books").then((result) => {
+            console.log(result.data)
+            setBooks(result.data)
+        })
+    }, [])
 
     const showModal = (idBook:string, element:HTMLElement) => {
         const elementPos = element
@@ -51,6 +62,7 @@ export function Books() {
         author: string,
         year: number,
         pages: number,
+        category: string,
     ) => {
 
         const data = [
@@ -59,7 +71,8 @@ export function Books() {
                 name: name,
                 author: author,
                 year: year,
-                pages: pages
+                pages: pages,
+                category: category
 
             }
         ]
@@ -91,7 +104,8 @@ export function Books() {
                                 dataBook.name,
                                 dataBook.author,
                                 dataBook.year,
-                                dataBook.pages
+                                dataBook.pages,
+                                dataBook.category_id
                             )}
                         >
                             <BookCard

@@ -7,6 +7,7 @@ interface DetailsBookProps {
         author: string;
         year: number;
         pages: number;
+        category: string;
     }
 }
 
@@ -17,7 +18,8 @@ export const slice = createSlice({
         name: "All books",
         author: "",
         year: 0,
-        pages: 0
+        pages: 0,
+        category: ""
     },
 
     reducers: {
@@ -28,7 +30,8 @@ export const slice = createSlice({
                 name: payload[0].name,
                 author: payload[0].author,
                 year: payload[0].year,
-                pages: payload[0].pages
+                pages: payload[0].pages,
+                category: payload[0].category
             }
         },
 
@@ -39,7 +42,8 @@ export const slice = createSlice({
                 name: "",
                 author: "",
                 year: 0,
-                pages: 0
+                pages: 0,
+                category: ""
             }
         }
     }

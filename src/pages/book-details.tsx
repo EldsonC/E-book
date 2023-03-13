@@ -2,20 +2,22 @@ import { AuthorIcon } from "../assets/icons/author";
 import { PagesIcon } from "../assets/icons/pages";
 import { YearIcon } from "../assets/icons/year";
 import { BookDetailsStyle } from "../assets/styles/book-details";
-import { books } from "../shared/mocks/books";
 
 import { dataDetails, setDetails } from "../redux/features/detailsbookSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BookCard } from "../shared/components/book-card";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../shared/services/api";
+import { CategoryIcon } from "../assets/icons/gender";
 
 interface BookProps {
     cover: string;
     name: string;
     author: string;
-    gender: string;
     year: number;
     pages: number;
+    category_id: string;
 }
 
 export function BookDetails() {
@@ -23,7 +25,17 @@ export function BookDetails() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const [books , setBooks] = useState([])
+
+
     const bookFind = dataBook.author
+
+    useEffect(() => {
+        api.get("/get-books").then((result) => {
+            console.log(result.data)
+            setBooks(result.data)
+        })
+    }, [])
 
     const bookFilter = books.filter((book:BookProps) => book.author?.includes(
         bookFind.toLocaleLowerCase())
@@ -35,6 +47,7 @@ export function BookDetails() {
         author: string,
         year: number,
         pages: number,
+        category: string,
     ) => {
 
         const data = [
@@ -43,7 +56,8 @@ export function BookDetails() {
                 name: name,
                 author: author,
                 year: year,
-                pages: pages
+                pages: pages,
+                category: category
 
             }
         ]
@@ -77,7 +91,8 @@ export function BookDetails() {
                                 <span>{dataBook.pages}</span>
                             </div>
                             <div className="container-card">
-                                <span>motivation</span>
+                                <CategoryIcon/>
+                                <span>{dataBook.category}</span>
                             </div>
                         </div>
 
@@ -113,7 +128,8 @@ export function BookDetails() {
                             dataBook.name,
                             dataBook.author,
                             dataBook.year,
-                            dataBook.pages
+                            dataBook.pages,
+                            dataBook.category_id
                             
                         ))}>
                             <BookCard
