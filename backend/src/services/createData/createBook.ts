@@ -1,13 +1,13 @@
-import { Books } from "../entities/books";
-import { AppDataSource } from "../database";
+import { Books } from "../../entities/books";
+import { AppDataSource } from "../../database";
 
 interface BookProps {
     cover: string;
     name: string;
     author: string;
-    category: string;
     year: number;
     pages: number;
+    category_id: string;
 }
 
 export class CreateBookService {
@@ -15,9 +15,9 @@ export class CreateBookService {
         cover,
         name,
         author,
-        category,
         year,
-        pages
+        pages,
+        category_id,
     }:BookProps): Promise<Books | Error> {
         const repository = AppDataSource.getRepository(Books);
 
@@ -25,9 +25,9 @@ export class CreateBookService {
             cover,
             name,
             author,
-            category,
             year,
-            pages
+            pages,
+            category_id,
         })
 
         await repository.save(book)

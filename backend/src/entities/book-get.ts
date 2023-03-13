@@ -4,7 +4,7 @@ import { Books } from "./books";
 import { Students } from "./students";
 
 @Entity("categories")
-export class categories {
+export class BookGet {
     @PrimaryColumn()
     id: string;
 

@@ -15,8 +15,6 @@ export const AppDataSource = new DataSource({
     ]
 })
 
-//Ebook@2023@
-
 AppDataSource.initialize()
     .then(() => {
         console.log("===== | CONNECTED TO DATABASE | =====")

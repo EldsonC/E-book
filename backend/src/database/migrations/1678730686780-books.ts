@@ -1,8 +1,31 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class books1678453607959 implements MigrationInterface {
+export class books1678730686780 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createTable(
+            new Table({
+                name: "categories",
+                columns: [
+                    {
+                        name: "id",
+                        type: "varchar",
+                        isPrimary: true
+                    },
+                    {
+                        name: "name",
+                        type: "varchar",
+                        isUnique: true
+                    },
+                    {
+                        name: "created_At",
+                        type: "timestamp",
+                        default: "now()"
+                    }
+                ]
+            })
+        )
+
         await queryRunner.createTable(
             new Table({
                 name: "books",
@@ -14,7 +37,7 @@ export class books1678453607959 implements MigrationInterface {
                     },
                     {
                         name: "cover",
-                        type: "varchar",
+                        type: "varchar"
                     },
                     {
                         name: "name",
@@ -22,10 +45,6 @@ export class books1678453607959 implements MigrationInterface {
                     },
                     {
                         name: "author",
-                        type: "varchar"
-                    },
-                    {
-                        name: "category",
                         type: "varchar"
                     },
                     {
@@ -37,6 +56,10 @@ export class books1678453607959 implements MigrationInterface {
                         type: "numeric"
                     },
                     {
+                        name: "category_id",
+                        type: "varchar",
+                    },
+                    {
                         name: "created_At",
                         type: "timestamp",
                         default: "now()"
@@ -44,17 +67,18 @@ export class books1678453607959 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "fk_categories",
-                        columnNames: ["category"],
+                        name: "fk_categorie",
+                        columnNames: ["category_id"],
                         referencedTableName: "categories",
-                        referencedColumnNames: ["name"]
+                        referencedColumnNames: ["id"]
                     }
                 ]
-            })
+            }),
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("categories")
         await queryRunner.dropTable("books")
     }
 

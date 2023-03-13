@@ -1,5 +1,6 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn } from "typeorm"
+import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm"
 import { v4 as uuid } from "uuid"
+import { Categories } from "./categories";
 
 @Entity("books")
 export class Books {
@@ -16,7 +17,12 @@ export class Books {
     author: string;
 
     @Column()
-    category: string;
+    category_id: string;
+
+    @ManyToOne(() => Categories)
+    @JoinColumn({
+        name: "category_id"
+    })
 
     @Column() 
     year: number;

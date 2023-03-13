@@ -1,27 +1,17 @@
-import { CreateBookService } from "../services/createData/createBook";
+import { CreateCategoryService } from "../services/createData/createCategory";
 import { Request, Response } from "express";
 
-export class CreateBookController {
+export class CreateCategoryController {
     async execute(request:Request, response:Response) {
         try {
             const {
-                cover,
-                name,
-                author,
-                year,
-                pages,
-                category_id
+                name,  
             } = request.body
 
-            const book = new CreateBookService()
+            const category = new CreateCategoryService()
 
-            const result = await book.createBook({
-                cover,
+            const result = await category.createCategory({
                 name,
-                author,
-                year,
-                pages,
-                category_id
             })
 
             if (result instanceof Error) {
