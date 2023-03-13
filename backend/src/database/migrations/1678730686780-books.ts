@@ -10,12 +10,13 @@ export class books1678730686780 implements MigrationInterface {
                     {
                         name: "id",
                         type: "varchar",
-                        isPrimary: true
+                        isUnique: true
                     },
                     {
                         name: "name",
                         type: "varchar",
-                        isUnique: true
+                        isUnique: true,
+                        isPrimary: true
                     },
                     {
                         name: "created_At",
@@ -70,7 +71,7 @@ export class books1678730686780 implements MigrationInterface {
                         name: "fk_categorie",
                         columnNames: ["category_id"],
                         referencedTableName: "categories",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["name"]
                     }
                 ]
             }),

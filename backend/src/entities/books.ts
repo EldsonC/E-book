@@ -23,6 +23,7 @@ export class Books {
     @JoinColumn({
         name: "category_id"
     })
+    category: Categories
 
     @Column() 
     year: number;
