@@ -17,4 +17,10 @@ export const BooksStyle = styled.div `
     align-items: flex-start;
 
     gap: 15px;
+
+    @media screen and (max-width: 900px) {
+        padding: 38px 15px;
+        width: calc(100vw - 30px);
+        height: calc(100vh - 250px);
+    }
 `;

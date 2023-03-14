@@ -93,4 +93,8 @@ export const SidebarStyle = styled.aside `
 
         cursor: pointer;
     }
+
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
 `;

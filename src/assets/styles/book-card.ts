@@ -8,6 +8,8 @@ export const BookCardStyle = styled.div `
     display: flex;
     flex-direction: column;
 
+    cursor: pointer;
+
     img {
         width: 100%;
         height: 100%;
@@ -53,5 +55,10 @@ export const BookCardStyle = styled.div `
         to {
             opacity: 1;
         }
+    }
+
+    @media screen and (max-width: 900px) {
+        width: 172px;
+        height: 255px;
     }
 `;
