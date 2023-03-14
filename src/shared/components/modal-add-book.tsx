@@ -12,6 +12,13 @@ interface CategoriesProps {
 }
 export function ModalAddBook() {
     const dispatch = useDispatch()
+    const [ name, setName ] = useState("")
+    const [ author, setAuthor ] = useState("")
+    const [ category, setCategory ] = useState("")
+    const [ year, setYear ] = useState(0)
+    const [ pages, setPages ] = useState(0)
+
+    console.log(category)
 
     const hideModal = () => {
         dispatch(hideModalAddBook())
@@ -24,6 +31,18 @@ export function ModalAddBook() {
             setCategories(result.data)
         })
     }, [])
+
+    const addBook = (e:any) => {
+        e.preventDefault()
+        api.post("/create-book", {
+            cover: "",
+            name: name,
+            author: author,
+            year: year,
+            pages: pages,
+            category_id: category
+        })
+    }
 
     const showPreview = (event:any) => {
         const src = URL.createObjectURL(event.target.files[0])
@@ -65,9 +84,9 @@ export function ModalAddBook() {
                         />
                     </div>
                     <div className="data-input-book">
-                        <input type="text" placeholder="Name"/>
-                        <input type="text" placeholder="Author"/>
-                        <select name="categories">
+                        <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" placeholder="Author" onChange={(e) => setAuthor(e.target.value)}/>
+                        <select name="categories" onChange={(e) => setCategory(e.target.value)}>
                             <option value="undefined">
                                 Undefined
                             </option>
@@ -79,10 +98,10 @@ export function ModalAddBook() {
                                 )
                             })}
                         </select>
-                        <input type="number" placeholder="Year"/>
-                        <input type="number" placeholder="Pages"/>
+                        <input type="number" placeholder="Year" onChange={(e) => setYear(parseInt(e.target.value))}/>
+                        <input type="number" placeholder="Pages" onChange={(e) => setPages(parseInt(e.target.value))}/>
 
-                        <button>Add book</button>
+                        <button onClick={(e) => addBook(e)}>Add book</button>
                         <button 
                             id="btn-delete-mobile"
                             onClick={() => hideModal()}

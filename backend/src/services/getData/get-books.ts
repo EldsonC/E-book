@@ -7,8 +7,7 @@ export class GetBookService {
             .createQueryBuilder("books")
             .select("*")
             .execute()
-        
-        console.log(repository)
+
         return repository
     }
 }
