@@ -12,6 +12,7 @@ interface CategoriesProps {
 }
 export function ModalAddBook() {
     const dispatch = useDispatch()
+    const [ cover, setCover ] = useState<File | string>("")
     const [ name, setName ] = useState("")
     const [ author, setAuthor ] = useState("")
     const [ category, setCategory ] = useState("")
@@ -32,16 +33,24 @@ export function ModalAddBook() {
         })
     }, [])
 
-    const addBook = (e:any) => {
+    const addBook = async (e:any) => {
         e.preventDefault()
-        api.post("/create-book", {
-            cover: "",
-            name: name,
-            author: author,
-            year: year,
-            pages: pages,
-            category_id: category
-        })
+        const formData = new FormData()
+        
+        formData.append("image", cover);
+        formData.append("name", name);
+        formData.append("author", author);
+        formData.append("year", year.toString());
+        formData.append("pages", pages.toString());
+        formData.append("category_id", category);
+
+        const headers = {
+            'headers': {
+                'Content-type': 'multipart/form-data'
+            }
+        }
+
+        await api.post("/create-book", formData, headers)
     }
 
     const showPreview = (event:any) => {
@@ -65,7 +74,7 @@ export function ModalAddBook() {
                         <CloseIcon/>
                     </div>
                 </header>
-                <form>
+                <form encType="multipart/form-data">
                     <div className="preview-image-cover">
                         <label htmlFor="image">
                             <img id="image-preview"/>
@@ -79,6 +88,9 @@ export function ModalAddBook() {
                             id="image"
                             accept="image/png,image/jpeg,image/jpg"
                             onChange={(e) => {
+                                if (e.target.files instanceof FileList) {
+                                    setCover(e.target.files[0])
+                                }
                                 showPreview(e)
                             }}
                         />

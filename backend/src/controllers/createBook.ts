@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 export class CreateBookController {
     async execute(request:Request, response:Response) {
         try {
+            const { path } = request.file
             const {
-                cover,
                 name,
                 author,
                 year,
@@ -16,7 +16,7 @@ export class CreateBookController {
             const book = new CreateBookService()
 
             const result = await book.createBook({
-                cover,
+                cover: path,
                 name,
                 author,
                 year,
