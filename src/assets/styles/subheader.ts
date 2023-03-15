@@ -9,7 +9,7 @@ export const SubheaderStyle = styled.div `
     top: 55px;
     right: 0px;
 
-    z-index: 1000;
+    z-index: 2000;
 
     display: flex;
     align-items: center;

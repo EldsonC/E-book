@@ -177,7 +177,7 @@ export const BookDetailsStyle = styled.div `
         
             .container-left {
                 margin: 0 auto;
-                z-index: 1000;
+                
         
                 display: flex;
                 flex-direction: column;
