@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BookDetailsStyle = styled.div `
     padding: 38px 24px;
-    width: calc(100vw - 257px);
+    width: calc(100vw - 48px);
     height: calc(100vh - 196px);
 
     position: absolute;
