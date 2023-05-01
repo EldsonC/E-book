@@ -84,8 +84,8 @@ export function Books() {
     const modalState = useSelector(stateModal)
     const modaladdbook = useSelector(stateModalAddBook)
 
-    const bookFilter = books.filter((book:BookProps) => book.name?.includes(
-        bookFind.toLocaleLowerCase())
+    const bookFilter = books.filter((book:BookProps) => book.name.includes(
+        bookFind.toLowerCase())
     )
 
     return (
@@ -111,6 +111,7 @@ export function Books() {
                             <BookCard
                             key={key}
                                 cover={dataBook.cover}
+                                name={dataBook.name}
                             />
                         </div>
                         </>

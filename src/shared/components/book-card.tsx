@@ -21,6 +21,7 @@ export function BookCard({
 }:BookProps) {
     return (
         <BookCardStyle>
+            <span>{name}</span>
             <img src={cover} alt="" /> 
         </BookCardStyle>
     )
