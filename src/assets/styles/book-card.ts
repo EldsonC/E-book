@@ -82,5 +82,25 @@ export const BookCardStyle = styled.div `
     @media screen and (max-width: 900px) {
         width: 172px;
         height: 255px;
+
+        span {
+            padding-left: 55px;
+            
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+
+            rotate: 90deg;
+            
+        }
     }
 `;
