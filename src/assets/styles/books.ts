@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BooksStyle = styled.div `
     padding: 38px 24px;
-    width: calc(100vw - 257px);
+    width: calc(100vw - 24px);
     height: calc(100vh - 196px);
 
     position: absolute;
@@ -13,7 +13,7 @@ export const BooksStyle = styled.div `
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
 
     gap: 15px;

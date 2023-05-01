@@ -12,7 +12,7 @@ export function Routers() {
                 <>
                     <Header/>
                     <Subheader/>
-                    <Sidebar/>
+                    {/* <Sidebar/> */}
                     <Books/> 
                 </>
             }/>
@@ -21,7 +21,7 @@ export function Routers() {
                 <>
                     <Header/>
                     <Subheader/>
-                    <Sidebar/>
+                    {/* <Sidebar/> */}
                     <BookDetails/>
                 </>
             }/>
